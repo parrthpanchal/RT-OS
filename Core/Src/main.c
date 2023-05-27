@@ -3,14 +3,14 @@
 
 int main(){
 
-	vLEDInit();
+	led_init();
 
 
 	while(1) {
 
-		vLEDOn();
+		led_on();
 		for(int i=0;i<90000;i++){};
-		vLEDOff();
+		led_off();
 		for(int i=0;i<90000;i++){};
 	}
 
