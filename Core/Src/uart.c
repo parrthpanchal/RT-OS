@@ -37,8 +37,7 @@ void uart_init(void) {
 	RCC->APB2ENR |= UART1_EN;
 
 	/* Configure Baud rate */
-	USART1->BRR = COMPUTE_BR(APB2_CLK, UART1_BAUDRATE)
-	;
+	USART1->BRR = COMPUTE_BR(APB2_CLK, UART1_BAUDRATE);
 	/* Enable Tx for USART1 */
 	USART1->CR1 |= CR1_TE;
 
