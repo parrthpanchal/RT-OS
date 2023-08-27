@@ -2,7 +2,9 @@
 #include "stm32f1xx.h"
 
 #define GPIOCEN (1U<<4)
+#define GPIOAEN (1U<<2)
 #define LED_PIN (1U<<13)
+
 
 void led_init(void) {
 
@@ -19,6 +21,23 @@ void led_init(void) {
 	GPIOC->CRH &= ~(1U << 22);
 	GPIOC->CRH &= ~(1U << 23);
 
+}
+
+void config_ext_leds(void) {
+
+	/* Enable CLK for PortA*/
+	RCC->APB2ENR |= GPIOAEN;
+
+	/* PA11 and PA12 pin config */
+	GPIOA->CRH &= ~(1U << 12);
+	GPIOA->CRH |= (1U << 13);
+	GPIOA->CRH &= ~(1U << 14);
+	GPIOA->CRH &= ~(1U << 15);
+
+	GPIOA->CRH &= ~(1U << 16);
+	GPIOA->CRH |= (1U << 17);
+	GPIOA->CRH &= ~(1U << 18);
+	GPIOA->CRH &= ~(1U << 19);
 }
 
 void led_on(void) {
